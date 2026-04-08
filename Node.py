@@ -23,7 +23,6 @@ class LinkedList:
         curr.next = new_node
 
     def display(self):
-        # Formato pedido: 10 -> 20 -> 30 -> null
         curr = self.head
         while curr:
             print(f"{curr.data} ->", end=" ")
