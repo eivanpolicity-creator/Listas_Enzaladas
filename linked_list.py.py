@@ -7,7 +7,6 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    
     def insert_at_beginning(self, data):
         new_node = Node(data)
         new_node.next = self.head
@@ -100,19 +99,60 @@ class LinkedList:
                     prev = curr
                     curr = curr.next
 
-if __name__ == "__main__":
+def menu():
     lista = LinkedList()
     
-    puntajes = [877, 9270, 1903, 1115, 4337] # Basado en tus logs
-    for p in puntajes:
+    puntajes_iniciales = [877, 9270, 1903, 1115, 4337]
+    for p in puntajes_iniciales:
         lista.insert_at_end(p)
-    
-    print("Lista original:")
-    lista.display()
-    
-    print("\nOrdenando por enlaces...")
-    lista.sort_by_links()
-    lista.display()
-    
-    print(f"\nTamaño de la lista: {lista.get_size()}")
-    print(f"Búsqueda del puntaje 1903 (Posición): {lista.search(1903)}")
+
+    while True:
+        print("\n--- MENÚ LISTA ENLAZADA ---")
+        print("1. Insertar al inicio")
+        print("2. Insertar al final")
+        print("3. Mostrar lista")
+        print("4. Buscar elemento (posición)")
+        print("5. Eliminar primer nodo")
+        print("6. Eliminar por valor")
+        print("7. Ver tamaño de la lista")
+        print("8. Invertir lista")
+        print("9. Ordenar lista (por enlaces)")
+        print("0. Salir")
+        
+        opcion = input("Elige una opción: ")
+
+        if opcion == "1":
+            dato = int(input("Introduce el número: "))
+            lista.insert_at_beginning(dato)
+        elif opcion == "2":
+            dato = int(input("Introduce el número: "))
+            lista.insert_at_end(dato)
+        elif opcion == "3":
+            print("\nLista actual:")
+            lista.display()
+        elif opcion == "4":
+            dato = int(input("Número a buscar: "))
+            pos = lista.search(dato)
+            print(f"Posición: {pos}" if pos != -1 else "No encontrado.")
+        elif opcion == "5":
+            lista.delete_first()
+            print("Primer nodo eliminado.")
+        elif opcion == "6":
+            dato = int(input("Valor a eliminar: "))
+            lista.delete_by_value(dato)
+        elif opcion == "7":
+            print(f"Tamaño: {lista.get_size()}")
+        elif opcion == "8":
+            lista.reverse()
+            print("Lista invertida.")
+        elif opcion == "9":
+            lista.sort_by_links()
+            print("Lista ordenada por enlaces.")
+        elif opcion == "0":
+            print("Saliendo...")
+            break
+        else:
+            print("Opción no válida.")
+
+if __name__ == "__main__":
+    menu()
