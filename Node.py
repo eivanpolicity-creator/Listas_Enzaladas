@@ -7,7 +7,8 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-        def insert_at_beginning(self, data):
+    
+    def insert_at_beginning(self, data):
         new_node = Node(data)
         new_node.next = self.head
         self.head = new_node
@@ -39,12 +40,13 @@ class LinkedList:
             pos += 1
         return -1
 
-        def delete_first(self):
+    def delete_first(self):
         if self.head:
             self.head = self.head.next
 
     def delete_by_value(self, value):
-        if not self.head: return
+        if not self.head: 
+            return
         if self.head.data == value:
             self.head = self.head.next
             return
@@ -72,7 +74,7 @@ class LinkedList:
             curr = next_node
         self.head = prev
 
-        def sort_by_links(self):
+    def sort_by_links(self):
         if not self.head or not self.head.next:
             return
         
@@ -83,7 +85,6 @@ class LinkedList:
             curr = self.head
             while curr and curr.next:
                 if curr.data > curr.next.data:
-                    
                     temp = curr.next
                     curr.next = temp.next
                     temp.next = curr
@@ -99,4 +100,19 @@ class LinkedList:
                     prev = curr
                     curr = curr.next
 
-
+if __name__ == "__main__":
+    lista = LinkedList()
+    
+    puntajes = [877, 9270, 1903, 1115, 4337] # Basado en tus logs
+    for p in puntajes:
+        lista.insert_at_end(p)
+    
+    print("Lista original:")
+    lista.display()
+    
+    print("\nOrdenando por enlaces...")
+    lista.sort_by_links()
+    lista.display()
+    
+    print(f"\nTamaño de la lista: {lista.get_size()}")
+    print(f"Búsqueda del puntaje 1903 (Posición): {lista.search(1903)}")
