@@ -3,7 +3,6 @@ class Node:
         self.data = data
         self.next = None
 
-
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -32,3 +31,14 @@ class LinkedList:
             print(current.data, end=" -> ")
             current = current.next
         print("None")
+
+   def search(self, target):
+    current = self.head
+
+    while current is not None:
+        if current.data == target:
+            return True
+        current = current.next
+        
+        else 
+          return -1
